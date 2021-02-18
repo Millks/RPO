@@ -35,14 +35,24 @@ find_library( # Sets the name of the path variable.
               # Specifies the name of the NDK library that
               # you want CMake to locate.
               log )
-
+# add spdlog
+add_definitions(-DSPDLOG_COMPILED_LIB)
+add_library(spdlog STATIC IMPORTED)
+set_target_properties(
+        spdlog PROPERTIES IMPORTED_LOCATION /Users/millenasaar/AndroidStudioProjects/libs/spdlog/build/${ANDROID_ABI}/libspdlog.a
+)
+target_include_directories(
+        native-lib PUBLIC
+        ~/AndroidStudioProjects/libs/spdlog/spdlog/include
+)
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
                        native-lib
-
+                       spdlog
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )
+
