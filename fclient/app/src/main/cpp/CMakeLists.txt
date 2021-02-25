@@ -44,7 +44,7 @@ set_target_properties(
 target_include_directories(
         native-lib PUBLIC
         ~/AndroidStudioProjects/libs/spdlog/spdlog/include
-        ~/AndroidStudioProjects/libs/mbedtls/mbedtls/crypto/include
+        ~/AndroidStudioProjects/libs/mbedtls/mbedtls/include
 
 )
 add_library(mbedcrypto SHARED IMPORTED)
