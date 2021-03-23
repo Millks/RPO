@@ -35,17 +35,16 @@ public class PinpadActivity extends Activity {
     }
 
     public void keyClick(View v) {
-        String key = ((TextView)v).getText().toString();
+        String key = ((TextView) v).getText().toString();
         int sz = pin.length();
         if (sz < 4) {
             pin += key;
-            tvPin.setText("****".substring(3-sz));
+            tvPin.setText("****".substring(3 - sz));
         }
     }
 
-    protected void ShuffleKeys()
-    {
-        Button keys[] = new Button[] {
+    protected void ShuffleKeys() {
+        Button keys[] = new Button[]{
                 findViewById(R.id.btnKey0),
                 findViewById(R.id.btnKey1),
                 findViewById(R.id.btnKey2),
@@ -61,8 +60,7 @@ public class PinpadActivity extends Activity {
         };
 
         byte[] rnd = MainActivity.randomBytes(MAX_KEYS);
-        for (int i = 0; i < MAX_KEYS; i++)
-        {
+        for (int i = 0; i < MAX_KEYS; i++) {
             int idx = (rnd[i] & 0xFF) % 10;
             CharSequence txt = keys[idx].getText();
             keys[idx].setText(keys[i].getText());
