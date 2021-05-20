@@ -1,4 +1,4 @@
-package moneyGrabber.backend.models;
+package millaProject.backend.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;

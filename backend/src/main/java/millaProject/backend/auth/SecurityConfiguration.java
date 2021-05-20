@@ -1,4 +1,4 @@
-package moneyGrabber.backend.auth;
+package millaProject.backend.auth;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

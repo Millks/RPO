@@ -1,7 +1,6 @@
-package moneyGrabber.backend.auth;
+package millaProject.backend.auth;
 
-import moneyGrabber.backend.repositories.UserRepository;
-import org.apache.tomcat.jni.Local;
+import millaProject.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,10 +35,10 @@ public class AuthenticationProvider extends AbstractUserDetailsAuthenticationPro
     protected UserDetails retrieveUser(String userName,
                                        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
         Object token = usernamePasswordAuthenticationToken.getCredentials();
-        Optional<moneyGrabber.backend.models.User> uu = userRepository.findByToken(String.valueOf(token));
+        Optional<millaProject.backend.models.User> uu = userRepository.findByToken(String.valueOf(token));
         if (uu.isEmpty())
             throw new UsernameNotFoundException("user is not found");
-        moneyGrabber.backend.models.User u = uu.get();
+        millaProject.backend.models.User u = uu.get();
 
         boolean timeout = true;
         LocalDateTime dt = LocalDateTime.now();
