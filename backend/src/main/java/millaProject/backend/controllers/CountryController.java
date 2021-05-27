@@ -1,15 +1,14 @@
-package moneyGrabber.backend.controllers;
+package millaProject.backend.controllers;
 
-import moneyGrabber.backend.models.Artist;
-import moneyGrabber.backend.models.Country;
-import moneyGrabber.backend.repositories.CountryRepository;
+import millaProject.backend.models.Artist;
+import millaProject.backend.models.Country;
+import millaProject.backend.repositories.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-import moneyGrabber.backend.tools.DataValidationException;
+import millaProject.backend.tools.DataValidationException;
 
 import java.util.*;
 import javax.validation.Valid;

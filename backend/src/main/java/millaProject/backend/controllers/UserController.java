@@ -1,12 +1,9 @@
-package moneyGrabber.backend.controllers;
+package millaProject.backend.controllers;
 
-import moneyGrabber.backend.models.Artist;
-import moneyGrabber.backend.models.Country;
-import moneyGrabber.backend.models.Museum;
-import moneyGrabber.backend.models.User;
-import moneyGrabber.backend.repositories.CountryRepository;
-import moneyGrabber.backend.repositories.MuseumRepository;
-import moneyGrabber.backend.repositories.UserRepository;
+import millaProject.backend.models.User;
+import millaProject.backend.models.Museum;
+import millaProject.backend.repositories.MuseumRepository;
+import millaProject.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

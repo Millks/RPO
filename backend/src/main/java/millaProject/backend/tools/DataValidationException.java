@@ -1,4 +1,4 @@
-package moneyGrabber.backend.tools;
+package millaProject.backend.tools;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

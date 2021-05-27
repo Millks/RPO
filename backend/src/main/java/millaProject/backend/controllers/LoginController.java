@@ -1,8 +1,8 @@
-package moneyGrabber.backend.controllers;
+package millaProject.backend.controllers;
 
-import moneyGrabber.backend.models.User;
-import moneyGrabber.backend.repositories.UserRepository;
-import moneyGrabber.backend.tools.Utils;
+import millaProject.backend.models.User;
+import millaProject.backend.repositories.UserRepository;
+import millaProject.backend.tools.Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

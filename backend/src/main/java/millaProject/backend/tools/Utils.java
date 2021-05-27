@@ -1,4 +1,4 @@
-package moneyGrabber.backend.tools;
+package millaProject.backend.tools;
 
 import org.springframework.security.crypto.codec.Hex;
 import java.security.MessageDigest;

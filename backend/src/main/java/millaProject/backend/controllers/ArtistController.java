@@ -1,10 +1,8 @@
-package moneyGrabber.backend.controllers;
+package millaProject.backend.controllers;
 
-import moneyGrabber.backend.models.Artist;
-import moneyGrabber.backend.models.Country;
-import moneyGrabber.backend.repositories.ArtistRepository;
+import millaProject.backend.models.Artist;
+import millaProject.backend.repositories.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

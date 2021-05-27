@@ -1,4 +1,4 @@
-package moneyGrabber.backend.controllers;
+package millaProject.backend.controllers;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

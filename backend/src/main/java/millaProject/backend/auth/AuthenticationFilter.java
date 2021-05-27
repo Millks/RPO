@@ -1,4 +1,4 @@
-package moneyGrabber.backend.auth;
+package millaProject.backend.auth;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;

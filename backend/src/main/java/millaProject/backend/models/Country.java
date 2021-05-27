@@ -1,6 +1,4 @@
-package moneyGrabber.backend.models;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package millaProject.backend.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;

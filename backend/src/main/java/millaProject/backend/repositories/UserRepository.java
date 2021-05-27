@@ -1,8 +1,8 @@
-package moneyGrabber.backend.repositories;
+package millaProject.backend.repositories;
 
+import millaProject.backend.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import moneyGrabber.backend.models.User;
 
 import java.util.Optional;
 
