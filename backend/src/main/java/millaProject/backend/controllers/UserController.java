@@ -5,6 +5,9 @@ import millaProject.backend.models.Museum;
 import millaProject.backend.repositories.MuseumRepository;
 import millaProject.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -22,10 +25,16 @@ public class UserController {
     @Autowired
     MuseumRepository museumRepository;
 
+//    @GetMapping("/users")
+//    public List<User> getAllUsers() {
+//        return userRepository.findAll();
+//    }
+
     @GetMapping("/users")
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public Page<User> getAllCountries(@RequestParam("page") int page, @RequestParam("limit") int limit){
+        return userRepository.findAll(PageRequest.of(page, limit, Sort.by(Sort.Direction.ASC, "name")));
     }
+
 
     @PostMapping("/users")
     public ResponseEntity<?> createUser(@Validated @RequestBody User user) {

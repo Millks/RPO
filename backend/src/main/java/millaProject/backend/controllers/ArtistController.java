@@ -1,8 +1,12 @@
 package millaProject.backend.controllers;
 
 import millaProject.backend.models.Artist;
+import millaProject.backend.models.Country;
 import millaProject.backend.repositories.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,10 +24,15 @@ import java.util.Optional;
 public class ArtistController {
     @Autowired
     ArtistRepository artistRepository;
+//
+//    @GetMapping("/artists")
+//    public List<Artist> getAllCountries() {
+//        return artistRepository.findAll();
+//    }
 
     @GetMapping("/artists")
-    public List<Artist> getAllCountries() {
-        return artistRepository.findAll();
+    public Page<Artist> getAllCountries(@RequestParam("page") int page, @RequestParam("limit") int limit){
+        return artistRepository.findAll(PageRequest.of(page, limit, Sort.by(Sort.Direction.ASC, "name")));
     }
 
     @PostMapping("/artists")

@@ -7,7 +7,6 @@ import {faChevronLeft, faSave} from "@fortawesome/free-solid-svg-icons";
 import {alertActions} from "../utils/Rdx";
 import Alert from "react-bootstrap/Alert";
 
-
 class CountryComponent extends Component {
     constructor(props) {
         super(props)
@@ -15,6 +14,8 @@ class CountryComponent extends Component {
             id: this.props.match.params.id,
             name: '',
             hidden: false,
+            alertShow: false,
+            alertMessage: '',
         }
 
         this.onSubmit = this.onSubmit.bind(this)
@@ -26,22 +27,33 @@ class CountryComponent extends Component {
     };
 
     onSubmit(event) {
+        console.log(event, 'event');
         event.preventDefault();
         event.stopPropagation();
         let err = null;
+        console.log(this.state, 'STATE');
         if (!this.state.name) {
             err = "Название страны должно быть указано"
         }
         if (err) {
             this.props.dispatch(alertActions.error(err))
+            this.setState({alertShow: true, alertMessage: 'Название страны должно быть указано'});
+            return ;
         }
         let country = {id: this.state.id, name: this.state.name};
         if (parseInt(country.id) === -1) {
             BackendService.createCountry(country)
-                .then(() => {
+                .then((res) => {
+                    if (res.data.error) {
+                        throw new Error(res.data.error);
+                    }
                     this.props.history.push('/countries')
                 })
-                .catch(() => {});
+                .catch((e) => {
+                    this.props.dispatch(alertActions.error(e));
+                    this.setState({alertShow: true, alertMessage: 'Такая страна уже есть'});
+
+                })
         } else {
             BackendService.updateCountry(country)
                 .then(() => this.props.history.push('/countries'))
@@ -66,34 +78,35 @@ class CountryComponent extends Component {
         if (this.state.hidden)
             return null;
         return (
-                <div className="m-4">
-                    <div className="row my-2 mr-0">
-                        <h3>Страна</h3>
-                        <button
-                            className="btn btn-outline-secondary ml-auto"
-                            onClick={() => this.props.history.goBack()}><FontAwesomeIcon
-                            icon={faChevronLeft}/>{' '}Назад
-                        </button>
-                    </div>
-                    <Form onSubmit={this.onSubmit}>
-                        <Form.Group>
-                            <Form.Label>Название</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Введите название страны"
-                                onChange={this.handleChange}
-                                value={this.state.name}
-                                name="name"
-                                autoComplete="off"
-                            />
-                        </Form.Group>
-                        <button
-                            className="btn btn-outline-secondary"
-                            type="submit"><FontAwesomeIcon
-                            icon={faSave}/>{" "}-Сохранить
-                        </button>
-                    </Form>
+            <>
+                {this.state.alertShow && <Alert variant={'danger'}>{this.state.alertMessage}</Alert>}
+            <div className="m-4">
+                <div className="row my-2 mr-0">
+                    <h3>Страна</h3>
+                    <button
+                        className="btn btn-outline-secondary ml-auto"
+                        onClick={() => this.props.history.goBack()}><FontAwesomeIcon icon={faChevronLeft}/>{' '}Назад
+                    </button>
                 </div>
+                <Form onSubmit={this.onSubmit}>
+                    <Form.Group>
+                        <Form.Label>Название</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Введите название страны"
+                            onChange={this.handleChange}
+                            value={this.state.name}
+                            name="name"
+                            autoComplete="off"
+                        />
+                    </Form.Group>
+                    <button
+                        className="btn btn-outline-secondary"
+                        type="submit"><FontAwesomeIcon icon={faSave}/>{" "}-Сохранить
+                    </button>
+                </Form>
+            </div>
+                </>
         )
     }
 
